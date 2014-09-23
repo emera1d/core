@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+</head>
+<body>
+<input id="inp" type="text" value="12345" autofocus value="autofocus">
+<a id="ctrl" href="#1">insert</a>
+<a id="ctrlFocus" href="#2">focus</a>
+<div id="vide_node"></div>
+
+</body>
+<script>
+
+// document.body.addEventListener('focus',function(e){
+// 	// console.log('focus: ' + e.target.nodeName);
+// },true);
+
+// document.body.addEventListener('focusin',function(e){
+// 	// console.log('focusin: ' + e.target.nodeName);
+// },true);
+
+// ctrl.onclick = function(){
+// 	setTimeout(function(){
+// 		//vide_node.innerHTML = '<input type="text" value="12345" name="location" autocomplete="off" autofocus placeholder="Type your location" class="input-search js-control" data-control-type="location-list">'
+
+// 		// var inp = document.createElement('input');
+// 		// inp.value = 12345;
+// 		// inp.autofocus = true;
+
+// 		vide_node.appendChild( document.body.firstChild.nextSibling.cloneNode() );
+// 		// vide_node.appendChild( inp );
+
+// 	}, 1000);
+// 	return false;
+// }
+
+// document.body.firstChild.nextSibling.addEventListener('focusin',function(e){
+// 	// console.log('focusin');
+// 	this.select();
+// },true);
+
+inp.onfocus = function(){
+	console.log(1);
+
+	inp.setSelectionRange(0,3);
+}
+
+ctrlFocus.onclick = function(e){
+	// inp.focus();
+	inp.setSelectionRange(0,3);
+	// inp.select();
+
+	return false;
+}
+
+</script>
+</html>
