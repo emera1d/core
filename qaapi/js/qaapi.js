@@ -57,21 +57,13 @@ var qa = (function(){
 		return list;
 	};
 
-	qa.request = function(url, data, fn) {
-		var params=[];
+	qa.request = function(url, cfg) {
+		var opt = {};
 
-		if(arguments.length==2) fn=data;
+		if(cfg.param) opt.param = cfg.param;
+		if(cfg.ok) opt.ok = cfg.ok;
 
-		if(data) {
-			for(var k in data)
-				params.push(k+'='+data[k]);
-
-			url += '?' + params.join('&')
-		}
-
-		xhr(url, {
-			
-		});
+		new xhr(url, cfg);
 	}
 
 	return qa;

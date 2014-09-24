@@ -14,8 +14,8 @@ var tpl = (function(){
 
 	tpl.parse = function(str, ds) {
 		return str.replace(this.re, function(match, p1, index, line) {
-			return (p1 in ds ? ds[p1] : match);
-		})
+			return (p1 in ds ? ds[p1] : '');
+		});
 	};
 
 	/**

@@ -109,6 +109,8 @@ var view = (function() {
 		if(params)
 			for(var i=0;i<params.length;i++) {
 				list.innerHTML += tpl.parse(tmpl, params[i]);
+				if(params[i].hasOwnProperty('initial'))
+					dom.qs('input', list.lastChild).value = params[i].initial;
 			}
 	};
 
@@ -142,8 +144,10 @@ var view = (function() {
 
 	view.request = function() {
 		var url = dom('qa_hostname').value + '/' + dom('qa_method').value;
-		
-		qa.request(url, this.getParams());
+
+		qa.request(url, { param: this.getParams(), ok: function(res) {
+
+		}});
 	};
 
 	return view;

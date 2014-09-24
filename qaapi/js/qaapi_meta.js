@@ -19,7 +19,7 @@ var qa_meta = {
 				cookie: 'aid'
 			}
 			, phone: {
-				initial: '1234567'
+				initial: '1234567890'
 			}
 		}
 	}
