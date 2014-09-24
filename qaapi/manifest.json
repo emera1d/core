@@ -29,8 +29,9 @@
 		  "http://*/*"
 		, "https://*/*"
 
-		, "notifications"
 		, "activeTab"
+		// , "cookies"
+		, "notifications"
 		, "tabs"
 
 		// , {"fileSystem": ["write", "retainEntries", "directory"]}

@@ -20,7 +20,7 @@ var view = (function() {
 		this.redrawParams();
 
 		chm.cookie(function(ck) {
-			dom('user_id').value = ck.aid;
+			if(ck.aid)dom('user_id').value = ck.aid;
 		});
 	};
 
