@@ -1,6 +1,6 @@
 'use strict';
 
-var _U_ID_ = {
+var _USER_ID_ = {
 	cookie: 'aid'
 };
 
@@ -8,7 +8,7 @@ var qa_meta = {
 	accessLinkGet: {
 		url: 'accessLinkGet'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 			, context: {}
 			, partner_id: {}
 		}
@@ -17,7 +17,7 @@ var qa_meta = {
 	, userVerifyPhone: {
 		url: 'userVerifyPhone'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 			, phone: {
 				initial: '1234567890'
 			}
@@ -27,15 +27,15 @@ var qa_meta = {
 	, userCleanTrustedNetwork: {
 		url: 'userCleanTrustedNetwork'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 		}
 	}
 
 	, chatSendMessage: {
 		url: 'chatSendMessage'
 		, params: {
-			user_id: _U_ID_
-			, contact_user_id: {}
+			user_id: {}
+			, contact_user_id: _USER_ID_
 			, message: { initial: 'hello' }
 		}
 	}
@@ -43,7 +43,7 @@ var qa_meta = {
 	, userAddCredits: {
 		url: 'userAddCredits'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 			, amount: {}
 		}
 	}
@@ -51,7 +51,7 @@ var qa_meta = {
 	, userRemoveCredits: {
 		url: 'userRemoveCredits'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 			, amount: {}
 		}
 	}
@@ -59,18 +59,21 @@ var qa_meta = {
 	, userDetachFacebook: {
 		url: 'userDetachFacebook'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 		}
 	}
 
 	, userAddSppSubscription: {
 		url: 'userAddSppSubscription'
 		, params: {
-			user_id: _U_ID_
+			user_id: _USER_ID_
 			, aggregator_id: {}
 		}
 	}
 };
+
+
+qa_meta = JSON.parse(JSON.stringify(qa_meta));
 
 /*
 
