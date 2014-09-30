@@ -33,8 +33,8 @@ var view = (function() {
 	view.bindUI = function() {
 		var   qa_form = dom('qa_form')
 			, method = dom('qa_method')
-			, list = dom('method_list')
-			, keyup_t= timer(function() { view.setDataList(method.value); });
+			, list = dom('method_list');
+			// , keyup_t= timer(function() { view.setDataList(method.value); });
 
 
 		dom.on(qa_form, 'submit', function(ev){
@@ -70,7 +70,7 @@ var view = (function() {
 			}
 		});
 
-		dom.on(method, 'keyup', keyup_t);
+		// dom.on(method, 'keyup', keyup_t);
 	};
 
 	// view.setDataList = function(line) {
