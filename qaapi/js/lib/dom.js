@@ -14,15 +14,19 @@ var dom = (function(){
 		return (node||document).querySelectorAll(selector);
 	}
 
-	dom.on = function(node, eventname, fn) {
-		return node.addEventListener(eventname, fn, false);
+	dom.on = function(node, type, fn) {
+		return node.addEventListener(type, fn, false);
 	}
 
-	dom.bind = function(ctx, selector, eventName, fn) {
+	dom.un = function(node, type, fn) {
+		return node.removeEventListener(type, fn, false);
+	}
+
+	dom.bind = function(ctx, selector, type, fn) {
 
 		selector = selector.substr(1); // only class
 
-		dom.on(ctx, eventName, function(e) {
+		dom.on(ctx, type, function(e) {
 			var el = e.target||e.srcElement;
 			if(el.classList.contains(selector)) {
 				fn({el: el, e: e});

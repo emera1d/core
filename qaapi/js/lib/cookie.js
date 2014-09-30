@@ -13,7 +13,7 @@ var cookie = (function(){
 
 		for(var i=0;i<list.length;i++) {
 			val = list[i].split('=');
-			obj[ _.trim(val[0]) ] = _.trim(val[1]);
+			obj[ tpl.trim(val[0]) ] = tpl.trim(val[1]);
 		}
 
 		return obj;

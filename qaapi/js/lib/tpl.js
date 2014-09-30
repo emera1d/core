@@ -9,8 +9,12 @@ var tpl = (function(){
 	/**
 		base
 	 */
-	tpl.trim = /^\s+|\s+$/gm;
+	tpl.re_trim = /^\s+|\s+$/gm;
 	tpl.re = /\{([A-z0-9_]+)\}/gm;
+
+	tpl.trim = function(line) {
+		return line.replace(this.re_trim, '');
+	};
 
 	tpl.parse = function(str, ds) {
 		return str.replace(this.re, function(match, p1, index, line) {
