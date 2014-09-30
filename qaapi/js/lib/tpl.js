@@ -32,7 +32,7 @@ var tpl = (function(){
 
 		list.shift();
 		for(var i=0;i <list.length;i+=2) {
-			tpl.__templates[ list[i] ] = list[i+1].replace(this.trim, '');
+			tpl.__templates[ list[i] ] = list[i+1].replace(this.re_trim, '');
 		}
 	}
 
