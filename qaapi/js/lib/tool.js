@@ -6,6 +6,13 @@ var _ = (function(){
 
 	};
 
+	_.UUID = {
+		  ids: 0
+		, free: []
+
+		, get: function(){ return this.ids++; }
+	};
+
 	return _;
 
 })();
