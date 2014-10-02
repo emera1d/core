@@ -1,5 +1,6 @@
 'use strict';
 
+
 var cookie = (function(){
 
 	function cookie(id){

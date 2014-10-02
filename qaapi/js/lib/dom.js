@@ -1,5 +1,6 @@
 'use strict';
 
+
 var dom = (function(){
 
 	function dom(id){

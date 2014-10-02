@@ -1,5 +1,6 @@
 'use strict';
 
+
 var timer = function(fn,delay){
 
 	function timer(){

@@ -1,5 +1,6 @@
 'use strict';
 
+
 var xhr = (function(){
 
 	function xhr(url, opt){
