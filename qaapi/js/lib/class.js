@@ -3,8 +3,6 @@
 
 (function(G) {
 
-	function __base(){ arguments.callee.$super.apply(this, arguments); };
-	function __noop(){};
 	function __tmpl(){};
 
 	//
@@ -25,9 +23,9 @@
 			subclass = overrides.constructor;
 			delete overrides.constructor;
 		} else if(superclass) {
-			subclass = __base;
+			subclass = function (){ arguments.callee.$super.apply(this, arguments); };
 		} else {
-			subclass = __noop;
+			subclass = function (){};
 		}
 
 		if(!superclass) {
