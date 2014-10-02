@@ -12,17 +12,19 @@ function $class(superclass, overrides)
 		, d;
 
 	// normalize params
-	i=superclass instanceof Function;
-	overrides=overrides || !i && superclass || {};
-	superclass=i && superclass || null;
+	i = superclass instanceof Function;
+	overrides = overrides || !i && superclass || {};
+	superclass = i && superclass || null;
 
 	// find subclass constructor
-	if(overrides.constructor!=Object.prototype.constructor)
-		subclass=overrides.constructor, delete overrides.constructor;
-	else if(superclass)
+	if(overrides.constructor != Object.prototype.constructor) {
+		subclass = overrides.constructor;
+		delete overrides.constructor;
+	} else if(superclass) {
 		subclass=function(){ arguments.callee.$super.apply(this,arguments); };
-	else
+	} else {
 		subclass=function(){};
+	}
 
 	if(!superclass){
 		subclass.prototype=overrides;
@@ -35,7 +37,7 @@ function $class(superclass, overrides)
 		subp.constructor = subclass;
 		subclass.$super = superclass;
 
-		if(supp.constructor==Object.prototype.constructor)
+		if(supp.constructor == Object.prototype.constructor)
 			supp.constructor = superclass;
 
 		for(i in overrides){
