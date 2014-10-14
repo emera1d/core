@@ -31,6 +31,13 @@ var qa_meta = {
 		}
 	}
 
+	, userResetMeetmakerCounters: {
+		url: 'userResetMeetmakerCounters'
+		, params: {
+			user_id: _USER_ID_
+		}
+	}
+
 	, chatSendMessage: {
 		url: 'chatSendMessage'
 		, params: {
