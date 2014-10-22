@@ -31,6 +31,15 @@ var qa_meta = {
 		}
 	}
 
+	, photoModerate: {
+		url: 'photoModerate'
+		, params: {
+			user_id: _USER_ID_
+			, photo_id: {}
+			, moderation_status: { initial: 'Approved' }
+		}
+	}
+
 	, userResetMeetmakerCounters: {
 		url: 'userResetMeetmakerCounters'
 		, params: {

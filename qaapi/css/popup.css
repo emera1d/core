@@ -2,7 +2,13 @@
 body {
 	min-width: 350px;
 	height: 10px;
+	font-size: 14px;
 }
+
+input {
+	margin: 0 0 5px 0;
+}
+
 
 ._rr {
 	position: relative;
@@ -23,7 +29,7 @@ form input[type="submit"]{
 }*/
 
 #qa_hostname {
-	width: 349px;
+	width: 324px;
 }
 
 #user_id {
@@ -40,6 +46,10 @@ form input[type="submit"]{
 	height: 100px;
 }
 
+.atool {
+	text-decoration: none;
+	font-size: 14px;
+}
 
 .methods {
 	width: 125px;

@@ -18,6 +18,7 @@ var view = (function() {
 		this.bindUI();
 
 		this.redrawParams();
+		this.initLink();
 
 		chm.cookie(function(ck) {
 			if(ck.aid)dom('user_id').value = ck.aid;
@@ -51,20 +52,28 @@ var view = (function() {
 		dom.bind(qa_form, '.inp_val', 'dblclick', function(e) {
 			var name=e.el.getAttribute('ds-cookie');
 
-			if(name)
+			if(name) {
 				chm.cookie(function(ck) {
 					if(name in ck) e.el.value=ck[name];
+					view.initLink();
 				});
+			}
+		});
+
+		dom.bind(qa_form, '.inp_val', 'input', function(e) {
+			view.initLink();
 		});
 
 		dom.on(list, 'change', function() {
 			method.value = list.value;
 			view.redrawParams();
+			view.initLink();
 		});
 
 		dom.on(method, 'keydown', function(ev){
 			if(ev.keyCode == 13 ) {
 				view.redrawParams();
+				view.initLink();
 				ev.preventDefault();
 				return false;
 			}
@@ -130,6 +139,25 @@ var view = (function() {
 		}
 
 		return prm;
+	};
+
+	view.initLink = function() {
+		var link=dom('bookmark')
+			, params = this.getParams()
+			, val
+			, href = ''
+			, method = dom('qa_method').value;
+
+		for(var key in params) {
+			val = params[key];
+			if(val != '') {
+				href += key + '=' + val;
+			}
+		}
+
+		href = dom('qa_hostname').value + '/' + method + '?' + href;
+		link.setAttribute('href', href);
+		// link.innerText = method;
 	};
 
 	view.fillMethods = function() {
