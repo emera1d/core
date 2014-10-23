@@ -157,6 +157,7 @@ var view = (function() {
 
 		href = dom('qa_hostname').value + '/' + method + '?' + href;
 		link.setAttribute('href', href);
+		link.setAttribute('title', href);
 		// link.innerText = method;
 	};
 
