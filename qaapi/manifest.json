@@ -1,0 +1,43 @@
+{
+	"manifest_version": 2
+
+	, "name": "baqa"
+	, "description": "baqa"
+	, "version": "0.1"
+	, "incognito": "spanning"
+
+	, "options_page": "options.html"
+
+	, "background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	}
+
+	, "icons": { 
+		"16": "icon.png",
+		"48": "icon.png",
+		"128": "icon.png"
+	}
+
+	, "browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "default_title",      // optional; shown in tooltip
+		"default_popup": "popup.html"        // optional
+	}
+
+	, "permissions": [
+		  "http://*/*"
+		, "https://*/*"
+
+		, "activeTab"
+		// , "cookies"
+		, "notifications"
+		, "tabs"
+
+		// , {"fileSystem": ["write", "retainEntries", "directory"]}
+	]
+
+	, "web_accessible_resources": [
+		"48.png"
+	]
+}

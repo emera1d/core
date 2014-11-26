@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=utf-8">
+	<link href="css/popup.css" rel="stylesheet" type="text/css">
+</head>
+<body id="htmlbody">
+<div id="__template">
+<!--@body@-->
+<form id="qa_form">
+	<a id="bookmark" href="" class="atool">link</a> <input id="qa_hostname" type="text" value="http://qaapi.inazarov.d3.staffpass.msk" qaapi.inazarov.d3.staffpass.msk qaapi.staffpass.com>
+	<input id="qa_method" type="text" value="userCleanTrustedNetwork" list="method_data_list"> 
+	<input id="user_id" type="text" value="" class="_rr" tabindex="-1">
+
+	<div class="_rl method">
+		<select size=2 id="method_list"></select>
+		<datalist id="method_data_list"></datalist>
+	</div>
+
+	<div class="_rl params">
+		<div id="prop_list"></div>
+	</div>
+	<input type="submit" value="do" class="_rr">
+</form>
+
+<!--@simple_option@-->
+<option value="{val}">{val}</option>
+
+<!--@prop_item@-->
+<div class="prop">
+	<div class="name">{name}:</div>
+	<div class="value"><input type="text" name="{name}" class="inp_val" ds-cookie="{cookie}"></div>
+</div>
+</div>
+</body>
+
+<script src="js/lib/tool.js"></script>
+<script src="js/lib/timer.js"></script>
+<script src="js/lib/tpl.js"></script>
+<script src="js/lib/dom.js"></script>
+<script src="js/lib/xhr.js"></script>
+<script src="js/lib/chrome.js"></script>
+<script src="js/lib/cookie.js"></script>
+
+<script src="js/qaapi.js"></script>
+<script src="js/qaapi_meta.js"></script>
+
+<script src="js/view.js"></script>
+<script src="js/popup.js"></script>
+
+</html>

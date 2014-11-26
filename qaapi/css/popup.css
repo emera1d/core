@@ -1,0 +1,87 @@
+
+body {
+	min-width: 350px;
+	height: 10px;
+	font-size: 14px;
+}
+
+input {
+	margin: 0 0 5px 0;
+}
+
+
+._rr {
+	position: relative;
+	float: right;
+}
+
+._rL {
+	position: relative;
+	float: left;
+}
+
+form input[type="submit"]{
+	/*display: none;*/
+}
+
+/*#select_qa_method input[type="submit"]{
+	display: none;
+}*/
+
+#qa_hostname {
+	width: 324px;
+}
+
+#user_id {
+	width: 90px;
+	text-align: right;
+}
+
+#qa_method {
+	width: 255px;
+}
+
+#method_list {
+	width: 150px;
+	height: 100px;
+}
+
+.atool {
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.methods {
+	width: 125px;
+}
+
+.params {
+	width: 200px;
+	height:100px;
+}
+
+/*
+.item {
+	cursor: pointer;
+}
+
+.item:hover {
+	background: rgba(0,200,0,.3);
+}
+*/
+.prop {
+	position: relative;
+	overflow: hidden;
+}
+
+.prop .name, .prop .value {
+	position: relative;
+	float: left;
+}
+
+.prop .name { width: 105px; text-align: right; }
+
+.prop .value,
+.prop .value input { width: 90px; }
+
+.prop .value { padding: 0 0 0 5px; }
