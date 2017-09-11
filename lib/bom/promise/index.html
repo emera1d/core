@@ -1,0 +1,59 @@
+<html>
+<title>Not a promise</title>
+<body>
+</body>
+<script>
+	'use strict'
+
+	var simpleMode = /the_simple/.test(window.location.search);
+	var syncMode  = /the_sync/.test(window.location.search);
+	var asyncMode = /the_async/.test(window.location.search);
+
+	function printStackTrace(error) {
+		console.info(error.stack);
+	}
+
+	function mainFunction() {
+		// Создаётся объект promise
+		let promise = new Promise((resolve, reject) => {
+
+			if(syncMode) call_not_a_function_sync();
+
+			setTimeout(() => {
+
+				if(asyncMode) call_not_a_function_async();
+
+				// переведёт промис в состояние fulfilled с результатом 'result'
+				resolve('result');
+			}, 1000);
+
+		});
+
+		// promise.then навешивает обработчики на успешный результат или ошибку
+		promise
+			.then(
+				result => {
+					// первая функция-обработчик - запустится при вызове resolve
+					console.info('Fulfilled: ' + result); // result - аргумент resolve
+					console.log('resolve 1');
+				},
+				error => {
+					printStackTrace(error);
+					// вторая функция - запустится при вызове reject
+					console.info('Rejected: ' + error); // error - аргумент reject
+				}
+			)
+			.then(
+				result => {debugger;
+					console.log('resolve : 2');
+				}
+			)
+	}
+
+	if(simpleMode) call_not_a_function_simple();
+
+	mainFunction();
+
+
+</script>
+</html>

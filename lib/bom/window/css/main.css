@@ -1,0 +1,13 @@
+.cell {
+	display: inline-block;
+	height: 20px;
+}
+
+.pname {
+	width: 250px;
+}
+
+.pvalue {
+	width: 700px;
+	padding: 1px 5px;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+	input {
+		width: 300px;
+	}
+
+	textarea {
+		width: 300px;
+		height: 50px;
+	}
+	.d_none {
+		display: none;
+	}
+
+	.short {
+		width: 180px;
+	}
+
+	.fldName {
+		display: inline-block;
+		width: 130px;
+	}
+
+	</style>
+</head>
+<body>
+
+start typing:<br>
+<input type="text" id="inpValue"><p>
+<hr>
+<div class="fldName">event.key</div><input type="text" id="inpKey" class="short"disabled><br>
+<div class="fldName">event.url</div><input type="text" id="inpUrl" class="short"disabled><br>
+<div class="fldName">event.storageArea</div><input type="text" id="inpArea" class="short"disabled><br>
+<br>
+
+Storage value (event.getItem()):<br>
+<textarea type="text" id="storagevalue" disabled></textarea><br>
+Old value (event.oldValue)::<br>
+<textarea type="text" id="oldValue" disabled></textarea><br>
+New value (event.newValue)::<br>
+<textarea type="text" id="newValue" disabled></textarea><br>
+
+<br><br>
+<button id="btnClone">clone window</button>
+<button id="btnClose" class="d_none">close</button>
+
+</body>
+<script>
+var name = 'test',
+	wnds = [],
+	wWidth = 400,
+	wHeight = 500,
+	paddingLeft = 80,
+	marginRight = 10;
+
+
+
+function onChangeValue (ev) {
+	inpKey.value = ev.key;
+	inpUrl.value = ev.url;
+	inpArea.value = ev.storageArea;
+
+	storagevalue.value = localStorage.getItem(name);
+	oldValue.value = ev.oldValue;
+	newValue.value = ev.newValue;
+}
+
+function setValue () {
+	localStorage.setItem(name, inpValue.value);
+}
+
+function topOpener () {
+	var opener = window.opener;
+
+	while(opener.opener)
+		opener = opener.opener;
+
+	return opener;
+}
+
+function clonePopup () {
+	var wnd,
+		index,
+		inRow,
+		x,
+		y;
+
+	if(window.opener) {
+		topOpener().clonePopup();
+	} else {
+		var wnd = window.open(window.location.href, Date.now(), 'width='+wWidth+',height='+wHeight);
+
+		if(wnd) {
+			inRow = Math.floor((window.screen.width) / (wWidth+marginRight));
+			y = Math.floor(wnds.length/ inRow);
+			x = wnds.length % inRow;
+
+			wnd.moveTo(paddingLeft+x*(wWidth+marginRight), y*wHeight);
+
+			wnds.push(wnd);
+		}
+	}
+}
+
+function closeAllWindows (child) {
+	for(var i=0;i<wnds.length;i++) {
+		if(wnds[i] != child && !wnds[i].closed)
+			wnds[i].close();
+	}
+
+	wnds = [];
+}
+
+function unload () { debugger;
+	if(window.opener) {
+		topOpener().closeAllWindows(window);
+	} else {
+		closeAllWindows();
+	}
+}
+
+function onBeforeunload () {
+	unload();
+}
+
+function closeMe () {
+	window.close();
+}
+
+window.onbeforeunload = onBeforeunload;
+
+if(window.addEventListener) {
+	window.addEventListener('storage', onChangeValue);
+	inpValue.addEventListener('keyup', setValue);
+	btnClone.addEventListener('click', clonePopup);
+	btnClose.addEventListener('click', closeMe);
+} else {
+	document.attachEvent('onstorage', onChangeValue);
+	inpValue.attachEvent('onkeyup', setValue);
+	btnClone.attachEvent('onclick', clonePopup);
+	btnClose.attachEvent('onclick', closeMe);
+}
+
+if(window.opener)
+	btnClose.classList.remove('d_none');
+
+</script>
+</html>

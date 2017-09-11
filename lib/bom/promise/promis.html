@@ -1,0 +1,40 @@
+<html>
+<title>Not a promise</title>
+<body>
+</body>
+<script>
+	'use strict'
+
+	function printStackTrace(error) {
+		console.info(error.stack);
+	}
+
+	function getPromise(name, failure) {
+		return new Promise(function(resolve, reject) {
+			setTimeout( () => failure ? reject(name) : resolve(name), 1000 );
+		});
+	}
+
+	function mainFunction() {
+		var promiseList = [
+			getPromise('one'),
+			getPromise('three'),
+			getPromise('two')
+		];
+
+		var promiseAll = Promise.all(promiseList);
+
+		promiseAll
+			.then(function() {
+				console.log('then');
+			})
+			.catch(function() {
+				console.log('reject');
+			});
+	}
+
+	mainFunction();
+
+
+</script>
+</html>
